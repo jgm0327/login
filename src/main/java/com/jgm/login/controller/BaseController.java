@@ -15,37 +15,37 @@ public class BaseController {
     private final UserService userService;
 
     @GetMapping("/")
-    public String index(){
+    public String index() {
         return "index";
     }
 
     @GetMapping("/user")
-    public @ResponseBody String user(){
+    public @ResponseBody String user() {
         return "user";
     }
 
     @GetMapping("/manager")
-    public @ResponseBody String manager(){
+    public @ResponseBody String manager() {
         return "manager";
     }
 
     @GetMapping("/admin")
-    public @ResponseBody String admin(){
+    public @ResponseBody String admin() {
         return "admin";
     }
 
     @GetMapping("/loginForm")
-    public String loginForm(){
+    public String loginForm() {
         return "loginForm";
     }
 
     @GetMapping("/joinForm")
-    public String joinForm(){
+    public String joinForm() {
         return "joinForm";
     }
 
     @PostMapping("/join")
-    public String join(AuthInfo authInfo){
+    public String join(AuthInfo authInfo) {
         System.out.println(authInfo);
         userService.join(authInfo);
         return "redirect:/loginForm";
