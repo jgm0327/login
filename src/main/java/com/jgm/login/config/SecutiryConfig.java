@@ -1,6 +1,5 @@
 package com.jgm.login.config;
 
-import com.jgm.login.auth.PrincipalDetailsService;
 import com.jgm.login.filter.AuthenticationFilter;
 import com.jgm.login.filter.JwtAuthentacationFilter;
 import com.jgm.login.filter.JwtFilter;
@@ -28,8 +27,6 @@ public class SecutiryConfig extends AbstractHttpConfigurer<SecutiryConfig, HttpS
 
     private final TokenServiceImpl tokenService;
 
-    private final PrincipalDetailsService principalDetailsService;
-
     private final UserRepository userRepository;
 
     @Bean
@@ -39,7 +36,6 @@ public class SecutiryConfig extends AbstractHttpConfigurer<SecutiryConfig, HttpS
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .addFilter(corsFilter)
-                .addFilterBefore(new JwtFilter(tokenService), SecurityContextHolderFilter.class)
                 .addFilter(new JwtAuthentacationFilter(this.authenticationConfiguration().getAuthenticationManager(),
                         tokenService, userRepository))
                 .addFilter(new AuthenticationFilter(this.authenticationConfiguration().getAuthenticationManager(),

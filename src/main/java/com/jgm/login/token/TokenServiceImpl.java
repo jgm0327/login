@@ -72,7 +72,6 @@ public class TokenServiceImpl implements TokenService {
 
     @Override
     public String resolveToken(HttpServletRequest request) {
-        System.out.println(request.getHeader("Authorization"));
         return request.getHeader("Authorization");
     }
 
